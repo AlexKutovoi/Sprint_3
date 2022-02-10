@@ -7,8 +7,8 @@ import static io.restassured.RestAssured.given;
 
         private static final String ORDER_PATH = "/api/v1/orders/";
 
-        @Step
-        public ValidatableResponse create(Oders.Orders order) {
+        @Step("Создание заказа")
+        public ValidatableResponse create(Orders.orders order) {
             return given()
                     .spec(getBaseSpec())
                     .body(order)
@@ -17,7 +17,7 @@ import static io.restassured.RestAssured.given;
                     .then();
         }
 
-        @Step
+        @Step("список заказов")
         public ValidatableResponse getOrderList() {
             return given()
                     .spec(getBaseSpec())

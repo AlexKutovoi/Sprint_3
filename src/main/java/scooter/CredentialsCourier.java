@@ -1,8 +1,9 @@
 package scooter;
 
 public class CredentialsCourier {
-    public final String login;
-    public final String password;
+
+    private final String login;
+    private final String password;
 
     public CredentialsCourier (String login, String password) {
         this.login = login;
@@ -10,6 +11,6 @@ public class CredentialsCourier {
     }
 
     public static CredentialsCourier from(CreateCourier courier) {
-        return new CredentialsCourier(courier.login, courier.password);
+        return new CredentialsCourier(courier.getLogin(), courier.getPassword());
     }
 }

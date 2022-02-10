@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.*;
 
         private static final String COURIER_PATH = "api/v1/courier/";
 
-        @Step
+        @Step("Создание курьера")
         public ValidatableResponse create(CreateCourier courier) {
             return given()
                     .spec(getBaseSpec())
@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.*;
                     .then();
         }
 
-        @Step
+        @Step("создание логина")
         public ValidatableResponse login(CredentialsCourier credentials) {
             return given()
                     .spec(getBaseSpec())
@@ -30,7 +30,7 @@ import static io.restassured.RestAssured.*;
                     .then();
         }
 
-        @Step
+      @Step("удаление курьера")
         public void delete(int courierId) {
             given()
                     .spec(getBaseSpec())
@@ -47,7 +47,7 @@ import static io.restassured.RestAssured.*;
 
             String courierLogin = RandomStringUtils.randomAlphabetic(10);
             String courierPassword = RandomStringUtils.randomAlphabetic(10);
-            String courierFirstName = RandomStringUtils.randomAlphabetic(1);
+            String courierFirstName = RandomStringUtils.randomAlphabetic(10);
 
             ArrayList<String> loginPass = new ArrayList<>();
 
