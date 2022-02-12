@@ -1,4 +1,4 @@
-package scooterTest;
+package scootertest;
 
 import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
@@ -25,8 +25,8 @@ import static org.junit.Assert.assertEquals;
         @Parameterized.Parameters
         public static Object[][] getTestData() {
             return new Object[][]{
-                    {CreateCourier.getLogin(), 400, "Недостаточно данных для создания учетной записи"},
-                    {CreateCourier.getPassword(), 400, "Недостаточно данных для создания учетной записи"},
+                    {CreateCourier.getLoginOnly(), 400, "Недостаточно данных для создания учетной записи"},
+                    {CreateCourier.getPasswordOnly(), 400, "Недостаточно данных для создания учетной записи"},
                     {CreateCourier.getLoginAndPassword(), 201, null}
             };
         }

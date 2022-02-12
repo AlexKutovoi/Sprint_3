@@ -20,23 +20,23 @@ import static io.restassured.RestAssured.*;
                     .then();
         }
 
-        @Step("создание логина")
+        @Step("авторизация курьера")
         public ValidatableResponse login(CredentialsCourier credentials) {
-            return given()
+            return given().log().all()
                     .spec(getBaseSpec())
                     .body(credentials)
                     .when()
                     .post(COURIER_PATH + "login/")
-                    .then();
+                    .then().log().all();
         }
 
       @Step("удаление курьера")
         public void delete(int courierId) {
-            given()
+            given().log().all()
                     .spec(getBaseSpec())
                     .when()
                     .delete(COURIER_PATH + courierId)
-                    .then()
+                    .then().log().all()
                     .assertThat()
                     .statusCode(200)
                     .extract()

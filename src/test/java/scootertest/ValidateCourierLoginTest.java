@@ -1,4 +1,4 @@
-package scooterTest;
+package scootertest;
 
 import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
@@ -27,8 +27,8 @@ public class ValidateCourierLoginTest {
     @Parameterized.Parameters
     public static Object[][] getTestData() {
         return new Object[][]{
-                {CreateCourier.getPassword(), 400, "Недостаточно данных для входа"},
-                {CreateCourier.getLoginAndPassword(), 404, "Учетная запись не найдена"}
+                {CreateCourier.getRandomCredentials().getLoginOnly(), 400, "Недостаточно данных для входа"},
+                {CreateCourier.getRandomCredentials().getLoginAndPassword(), 404, "Учетная запись не найдена"}
         };
     }
 

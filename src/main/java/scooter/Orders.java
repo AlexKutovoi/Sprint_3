@@ -4,19 +4,18 @@ import java.util.List;
 
 public class Orders {
 
-    public static class orders {
+    public String firstName;
+    public String lastName;
+    public String address;
+    public String metroStation;
+    public String phone;
+    public String rentTime;
+    public String deliveryDate;
+    public String comment;
+    public List<String> color;
 
-        private String firstName;
-        private String lastName;
-        private String address;
-        private String metroStation;
-        private String phone;
-        private String rentTime;
-        private String deliveryDate;
-        private String comment;
-        private List<String> color;
 
-        public orders(String firstName, String lastName, String address, String metroStation, String phone, String rentTime, String deliveryDate, String comment) {
+    public Orders (String firstName, String lastName, String address, String metroStation, String phone, String rentTime, String deliveryDate, String comment) {
             this.firstName = firstName;
             this.lastName = lastName;
             this.address = address;
@@ -27,7 +26,7 @@ public class Orders {
             this.comment = comment;
         }
 
-        public static orders getRandom() {
+        public static Orders getRandom() {
             final String firstName = RandomStringUtils.randomAlphabetic(10);
             final String lastName = RandomStringUtils.randomAlphabetic(10);
             final String address = RandomStringUtils.randomAlphabetic(10);
@@ -36,10 +35,10 @@ public class Orders {
             final String rentTime = RandomStringUtils.randomNumeric(1);
             final String deliveryDate = "2022-02-15";
             final String comment = RandomStringUtils.randomAlphabetic(10);
-            return new orders(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment);
+            return new Orders(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment);
         }
 
-        public orders setColor(List<String> color) {
+        public Orders setColor(List<String> color) {
             getRandom();
             this.color = color;
             return this;
@@ -47,4 +46,4 @@ public class Orders {
 
     }
 
-}
+

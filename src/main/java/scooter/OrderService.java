@@ -8,30 +8,30 @@ import static io.restassured.RestAssured.given;
         private static final String ORDER_PATH = "/api/v1/orders/";
 
         @Step("Создание заказа")
-        public ValidatableResponse create(Orders.orders order) {
-            return given()
+        public ValidatableResponse create(Orders order) {
+            return given().log().all()
                     .spec(getBaseSpec())
                     .body(order)
                     .when()
                     .post(ORDER_PATH)
-                    .then();
+                    .then().log().all();
         }
 
         @Step("список заказов")
         public ValidatableResponse getOrderList() {
-            return given()
+            return given().log().all()
                     .spec(getBaseSpec())
                     .when()
                     .get(ORDER_PATH)
-                    .then();
+                    .then().log().all();
         }
 
         public void cancel(int orderTrack) {
-            given()
+            given().log().all()
                     .spec(getBaseSpec())
                     .when()
                     .put(ORDER_PATH + "cancel/?track=" + orderTrack)
-                    .then()
+                    .then().log().all()
                     .assertThat()
                     .statusCode(200)
                     .extract()
