@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 import scooter.CreateCourier;
 import scooter.CredentialsCourier;
 import scooter.ServiceCourier;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -27,18 +28,20 @@ public class ValidateCourierLoginTest {
     @Parameterized.Parameters
     public static Object[][] getTestData() {
         return new Object[][]{
-                {CreateCourier.getRandomCredentials().getLoginOnly(), 400, "Недостаточно данных для входа"},
+                {CreateCourier.getRandomCredentials().getPasswordOnly(), 400, "Недостаточно данных для входа"},
                 {CreateCourier.getRandomCredentials().getLoginAndPassword(), 404, "Учетная запись не найдена"}
         };
     }
 
     @Test
     public void invalidRequestTest() {
+
         ValidatableResponse response = new ServiceCourier().login(CredentialsCourier.from(courier));
         int statusCode = response.extract().statusCode();
+        assertEquals("Status code is wrong", statusCode, expectedStatusCode);
         String errorMessage = response.extract().path("message");
-        assertEquals("Status code is wrong.", statusCode, expectedStatusCode);
-        assertEquals("Error message is wrong.", errorMessage, expectedErrorMessage);
+        assertEquals("Error message is wrong", errorMessage, expectedErrorMessage);
+
     }
 
 }
